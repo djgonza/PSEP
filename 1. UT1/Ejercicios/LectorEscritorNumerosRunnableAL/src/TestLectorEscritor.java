@@ -14,11 +14,11 @@ public class TestLectorEscritor
      */
     public static void main(String[] args)
     {
-    	EscritorNumeros cervantes = new EscritorNumeros();
-        cervantes.run();
+    	Thread cervantes = new Thread(new EscritorNumeros());
+        cervantes.start();
         
-        LectorNumeros lecto = new LectorNumeros("numeros.txt");
-        lecto.run();          
+        Thread lecto = new Thread(new LectorNumeros("numeros.txt"));
+        lecto.start();          
         
     }
 }

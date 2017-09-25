@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
 import java.util.Scanner;
@@ -14,12 +16,12 @@ import java.util.Scanner;
  * 
  * Lee el fichero con BufferedReader ...
  */
-public class LectorNumeros extends Thread implements Runnable  {
+public class LectorNumeros implements Runnable {
 
 	private String nombre; // el nombre del fichero
 	private int total = 0;
 	private int suma = 0;
-	
+
 	/**
 	 * Constructor
 	 */
@@ -34,23 +36,33 @@ public class LectorNumeros extends Thread implements Runnable  {
 	 * siguiente el hilo duerme 300 milisegundos
 	 */
 	public void run() {
-		Scanner sc = new Scanner(this.nombre);
 
-		while (sc.hasNextLine()) {
-			this.total += 1;
-			System.out.println(sc.nextLine());
-			int num = Integer.parseInt(sc.nextLine());
-			this.suma += num;
-			System.out.println("Número leído: " + num);
-			try {
-				this.sleep(300);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}			
+		try {
+			FileReader fr = new FileReader(this.nombre);
+			BufferedReader br = new BufferedReader(fr);
+			String linea = br.readLine();
+			while (linea != null) {
+				this.total += 1;
+				int num = Integer.parseInt(linea);
+				this.suma += num;
+				linea = br.readLine();
+				System.out.println("Número leido: " + num);
+				Thread.sleep(300);
+
+			}
+			br.close();
+			System.out.println("Total Números leidos: " + this.total + " Suma:" + this.suma);
+			System.out.println("Fin del hilo lector");
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		System.out.println("Total Números leidos: " + this.total + " Suma:" + this.suma);
-		System.out.println("Fin del hilo lector");
-		sc.close();
+
 	}
 }

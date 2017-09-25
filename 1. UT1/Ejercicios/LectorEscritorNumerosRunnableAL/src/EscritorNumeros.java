@@ -7,7 +7,7 @@ import java.io.IOException;
  * en el fichero de texto "salida.txt", un nº en cada línea
  * 
  */
-public class EscritorNumeros extends Thread implements Runnable {
+public class EscritorNumeros implements Runnable {
 
 	/**
 	 * Constructor
@@ -26,11 +26,12 @@ public class EscritorNumeros extends Thread implements Runnable {
 		for (int i = 0; i <= 10; i++) {
 			int num = (int) (Math.random() * 100) + 1;
 			try {
-				FileWriter fw = new FileWriter("numeros.txt");
-				BufferedWriter bw=new BufferedWriter(fw);
-				bw.write(num);
+				FileWriter fw = new FileWriter("numeros.txt", true);
+				BufferedWriter bw = new BufferedWriter(fw);
+				bw.write(num +"");
+				bw.newLine();
 				System.out.println("N�mero escrito: " + num);
-				this.sleep(300);
+				Thread.sleep(300);
 				bw.close();
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
