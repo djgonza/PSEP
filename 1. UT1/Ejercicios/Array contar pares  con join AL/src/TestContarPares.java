@@ -29,13 +29,18 @@ public class TestContarPares
         //el primer hilo los 5 primeros elementos
         TareaContarPares run1 = new TareaContarPares(array, 0, 4);
         Thread hiloOne = new Thread(run1);
-//        TareaContarPares hiloOne = new TareaContarPares(array, 0, 4);
+        //Thread hiloOne = new Thread( new TareaContarPares(array, 0, 4));
+        //Creando el hilo como en la linea aqui encima comentada, no nos permite acceder al método getPares() que contiene la clase TareaContarPares.
+                
         //el segundo hilo los 5 elementos siguientes
         TareaContarPares run2 = new TareaContarPares(array, 5, 9);
         Thread hiloTwo = new Thread(run2);
+        //Thread hiloTwo = new Thread(new TareaContarPares(array, 5, 9));
+        
         //el tercer hilo los 5 últimos elementos
         TareaContarPares run3 = new TareaContarPares(array, 10, 14);
         Thread hiloThree = new Thread(run3);
+        //Thread hiloThree = new Thread(new TareaContarPares(array, 10, 14));
         
         //INICIO DE HILOS
         System.out.println("Iniciando los hilos");
