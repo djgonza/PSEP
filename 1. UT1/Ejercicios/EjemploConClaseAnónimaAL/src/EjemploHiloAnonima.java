@@ -11,7 +11,7 @@ public class EjemploHiloAnonima
          // a completar
     	
     	//Se crear la clase anónima SegundoHilo e implementa la interface Runnable
-    	class SegundoHilo implements Runnable {
+    	Thread segundoHilo =  new Thread( new Runnable  () {
         	
     		//El método run escribe números de 1 al 10
     		//También se encarga de mostrar información del hilo.
@@ -33,11 +33,12 @@ public class EjemploHiloAnonima
                 System.out.println("Es dominio: "+t.isDaemon());
                 System.out.println("Fin de run alcanzado en segundo hilo");
         	}
-        }
-        Thread segundoHilo =  new Thread( new SegundoHilo() );
+        });
+        
          
         
         //Mostramos los datos del hilo MAIN
+        //Utiliza los mismos meteodos explicados anteriormente.
         Thread t = Thread.currentThread ();        
         System.out.println("Propiedades del hilo MAIN.");
         System.out.println("Nombre: "+t.getName());
