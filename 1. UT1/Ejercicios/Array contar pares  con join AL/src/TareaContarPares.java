@@ -27,13 +27,20 @@ public class TareaContarPares implements Runnable {
 
 	public void countPares() {
 
-		for (int i = desde; i < hasta; i++) {
-
-			if (array[i] % 2 == 0) {
-				pares += 1;
+		try {
+			for (int i = desde; i <= hasta; i++) {
+				if (array[i] % 2 == 0) {					
+					pares += 1;
+					Thread.currentThread().sleep(500);
+				}
 			}
-
+			System.out.println("Fin del hilo => " + Thread.currentThread().getName());
+			
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+
 
 	}
 
@@ -52,20 +59,8 @@ public class TareaContarPares implements Runnable {
 	 */
 	public void run() {
 
-		try {
-			for (int i = desde; i < hasta; i++) {
-				if (array[i] % 2 == 0) {					
-					pares += 1;
-					Thread.currentThread().sleep(500);
-				}
-			}
-			System.out.println("Fin del hilo => " + Thread.currentThread().getName());
-			
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
+		this.countPares();
+		
 	}
 
 }
