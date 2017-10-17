@@ -33,6 +33,7 @@ public class ContadorPalabras implements Runnable {
 			}
 			sc.close();
 			System.out.println("Fichero "+this.nombreFichero+": "+totalPalabras);
+			Thread.yield();
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
