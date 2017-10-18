@@ -1,3 +1,4 @@
+package psep;
 
 public class Hucha
 {
@@ -8,12 +9,12 @@ public class Hucha
 		total = 0;
 	}
 
-	public   int getTotal()
+	public int getTotal()
 	{
 		return total;
 	}
 
-	public   void add(int valor)
+	public synchronized void add(int valor)
 	{
 		this.total += valor;
 	}

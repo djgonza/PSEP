@@ -25,7 +25,7 @@ class TareaDeposito implements Runnable
     		// nº de ingresos que hace el hilo
     		for(int i = 0; i < INGRESOS; i++) {
     			//Se realiza el depósito
-        		this.cuenta.depositar(INGRESOS);
+        		this.cuenta.depositar(cantidad);
     		}    		
     		//Se deja dormir el hilo
 			Thread.sleep(TIEMPO);

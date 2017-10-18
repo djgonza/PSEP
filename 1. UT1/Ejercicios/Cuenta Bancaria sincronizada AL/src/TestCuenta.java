@@ -12,8 +12,8 @@ public class TestCuenta {
 		CuentaBancaria cuenta = new CuentaBancaria();
 
 		// Se crean dos hilos
-		Thread hiloUno = new Thread(new TareaDeposito(cuenta, 1000));
-		Thread hiloDos = new Thread(new TareaDeposito(cuenta, 1000));
+		Thread hiloUno = new Thread(new TareaDeposito(cuenta, 100));
+		Thread hiloDos = new Thread(new TareaDeposito(cuenta, 100));
 
 		// Se ejecutan los dos hilos
 		hiloUno.start();

@@ -17,10 +17,12 @@ public class CuentaBancaria
    /**
       depositar dinero en la cuenta
       @param cantidad la cantidad a ingresar
+      
    */
-   public void  depositar(double cantidad)
+   public synchronized void  depositar(double cantidad)
    {
-      System.out.println("Depositando " + cantidad);
+      //Al principio no estaba synchronized y lo hace mal. 
+	   System.out.println("Depositando " + cantidad);
       double nuevoBalance = balance + cantidad;
       System.out.println(", nuevo balance es " + nuevoBalance);
       balance = nuevoBalance;
