@@ -20,9 +20,17 @@ public class HiloProductor extends Thread{
 	public void run() {
 		
 		for(int i = 0; i < 20; i++) {
+			//Generar un número aleatorio entre 1 y 70
 			int numAleatorio = (int) (Math.random()*70 + 1); 
+			
+			//Establecer el nombre del hilo
+			Thread.currentThread().setName(nombre);
+			
 			try {
+				//Llamar método insertar del buffer
 				buffer.insertar(numAleatorio);
+				
+				//Dormir el hilo 10 msg
 				Thread.sleep(10);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block

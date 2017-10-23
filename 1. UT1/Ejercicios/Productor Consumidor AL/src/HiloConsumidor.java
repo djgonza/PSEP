@@ -13,7 +13,13 @@ public class HiloConsumidor extends Thread {
 
 		for (int i = 0; i < 10; i++) {
 			try {
+				//Establecer el nombre del hilo
+				Thread.currentThread().setName(nombre);
+				
+				//Llamada método borrar del Buffer
 				buffer.borrar();
+				
+				//Dormir el hilo 30 msg
 				Thread.sleep(30);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block

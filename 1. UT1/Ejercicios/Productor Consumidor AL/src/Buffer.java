@@ -29,10 +29,17 @@ public class Buffer
 	 */
 	public synchronized void insertar(int valor) throws InterruptedException
 	{
-		 while(lista.size() == TAM)
+		//si la lista está llena el productor  deberá esperar 
+		while(lista.size() == TAM)
 			 wait();
+		
+		//Añadir valor a la lista
 		lista.add(valor);
+		
+		//Mensaje
 		System.out.println(Thread.currentThread().getName() + " Añadido valor " + valor);
+		
+		//Notificar al resto de hilos
 		notifyAll();	
 	}
 
@@ -46,11 +53,20 @@ public class Buffer
 	 */
 	public synchronized void borrar() throws InterruptedException
 	{
+		//si la lista está vacia el productor  deberá esperar 
 		while(lista.size() == 0)
 			 wait();
+		
+		//Obtener el primer valor de la lista
 		int valor = lista.get(0);
+		
+		//Borrar primer valor de la lista
 		lista.remove(0);
+		
+		//Mensaje
 		System.out.println(Thread.currentThread().getName() + " Consumido valor " + valor);
+		
+		//Notificar al resto de hilos
 		notifyAll();
 	}
 
