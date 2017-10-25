@@ -21,7 +21,7 @@ public class HiloHucha extends Thread {
 		try {
 			for (int i = 0; i < 100; i++) {
 				//Añadir 2€ a la hucha
-				this.hucha.add(2);
+				this.hucha.add(2);				
 			}
 			// Se duerme el hilo.
 			this.currentThread().sleep(30);
