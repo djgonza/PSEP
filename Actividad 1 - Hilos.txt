@@ -1,5 +1,0 @@
-Gestion de procesos en ios
-
-El sistema operativo iOS utiliza colas de prioridad que son un sistema donde los datos tienen un   orden de prioridad y se procesan dependiendo de ello. Cuando 2 o más procesos tienen la misma prioridad se ejecutan conforme vayan llegando.
-
-http://iosg1tec.blogspot.com.es/2015/03/gestion-de-procesos-memoria-principal-y.html
